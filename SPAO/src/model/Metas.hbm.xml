@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 18/06/2013 01:20:38 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Metas" table="metas" catalog="spao2">
+        <id name="codMeta" type="string">
+            <column name="cod_meta" length="30" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="natureza" class="model.Natureza" fetch="select">
+            <column name="natureza" length="7" not-null="true" />
+        </many-to-one>
+        <property name="qtdIncidenciasPermitidas" type="short">
+            <column name="qtd_incidencias_permitidas" not-null="true" />
+        </property>
+        <property name="nivelAlerta" type="short">
+            <column name="nivel_alerta" not-null="true" />
+        </property>
+        <property name="dataHoraInicio" type="timestamp">
+            <column name="data_hora_inicio" length="19" not-null="true" />
+        </property>
+        <property name="dataHoraTermino" type="timestamp">
+            <column name="data_hora_termino" length="19" not-null="true" />
+        </property>
+        <property name="removido" type="java.lang.Boolean">
+            <column name="removido" />
+        </property>
+    </class>
+</hibernate-mapping>

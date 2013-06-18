@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 18/06/2013 01:20:38 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Policial" table="policial" catalog="spao2">
+        <id name="matricula" type="int">
+            <column name="matricula" />
+            <generator class="assigned" />
+        </id>
+        <property name="nome" type="string">
+            <column name="nome" length="50" not-null="true" />
+        </property>
+        <property name="postoGraduacao" type="string">
+            <column name="posto_graduacao" length="20" not-null="true" />
+        </property>
+        <property name="tipoPermissao" type="string">
+            <column name="tipo_permissao" length="15" not-null="true" />
+        </property>
+        <property name="endereco" type="string">
+            <column name="endereco" length="50" not-null="true" />
+        </property>
+        <property name="status" type="string">
+            <column name="status" length="11" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="30" not-null="true" unique="true" />
+        </property>
+        <property name="senha" type="string">
+            <column name="senha" length="12" not-null="true" />
+        </property>
+        <property name="removida" type="boolean">
+            <column name="removida" not-null="true" />
+        </property>
+        <set name="ocorrenciasesForRadioOperador" inverse="true">
+            <key>
+                <column name="radio_operador" not-null="true" />
+            </key>
+            <one-to-many class="model.Ocorrencias" />
+        </set>
+        <set name="logs" inverse="true">
+            <key>
+                <column name="responsavel" not-null="true" />
+            </key>
+            <one-to-many class="model.Log" />
+        </set>
+        <set name="telefones" inverse="true">
+            <key>
+                <column name="matricula" not-null="true" />
+            </key>
+            <one-to-many class="model.Telefone" />
+        </set>
+        <set name="ocorrenciasesForNumeroPolicial" inverse="true">
+            <key>
+                <column name="numero_policial" not-null="true" />
+            </key>
+            <one-to-many class="model.Ocorrencias" />
+        </set>
+    </class>
+</hibernate-mapping>

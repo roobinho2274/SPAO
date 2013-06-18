@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 18/06/2013 01:20:38 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Eventos" table="eventos" catalog="spao2">
+        <composite-id name="id" class="model.EventosId">
+            <key-property name="tipoEvento" type="string">
+                <column name="tipo_evento" length="30" />
+            </key-property>
+            <key-property name="dataHoraInicio" type="timestamp">
+                <column name="data_hora_inicio" length="19" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="bairro" class="model.Bairro" fetch="select">
+            <column name="bairro" not-null="true" />
+        </many-to-one>
+        <many-to-one name="logradouro" class="model.Logradouro" fetch="select">
+            <column name="logradouro" not-null="true" />
+        </many-to-one>
+        <property name="dataHoraTermino" type="timestamp">
+            <column name="data_hora_termino" length="19" not-null="true" />
+        </property>
+        <property name="removido" type="boolean">
+            <column name="removido" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

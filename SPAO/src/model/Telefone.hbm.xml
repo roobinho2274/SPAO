@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 18/06/2013 01:20:38 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Telefone" table="telefone" catalog="spao2">
+        <composite-id name="id" class="model.TelefoneId">
+            <key-property name="matricula" type="int">
+                <column name="matricula" />
+            </key-property>
+            <key-property name="telefone" type="int">
+                <column name="telefone" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="policial" class="model.Policial" update="false" insert="false" fetch="select">
+            <column name="matricula" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

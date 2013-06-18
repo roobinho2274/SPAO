@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 18/06/2013 01:20:38 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Turno" table="turno" catalog="spao2">
+        <id name="periodo" type="short">
+            <column name="periodo" />
+            <generator class="assigned" />
+        </id>
+        <property name="intervalo" type="string">
+            <column name="intervalo" length="15" not-null="true" />
+        </property>
+        <property name="turno" type="string">
+            <column name="turno" length="2" not-null="true" />
+        </property>
+        <set name="ocorrenciases" inverse="true">
+            <key>
+                <column name="turno" not-null="true" />
+            </key>
+            <one-to-many class="model.Ocorrencias" />
+        </set>
+    </class>
+</hibernate-mapping>

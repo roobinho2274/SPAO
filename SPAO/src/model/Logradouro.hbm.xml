@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 18/06/2013 01:20:38 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Logradouro" table="logradouro" catalog="spao2">
+        <id name="codigoLogradouro" type="short">
+            <column name="codigo_logradouro" />
+            <generator class="assigned" />
+        </id>
+        <property name="logradouro" type="string">
+            <column name="logradouro" length="50" not-null="true" unique="true" />
+        </property>
+        <property name="tipo" type="string">
+            <column name="tipo" length="8" not-null="true" />
+        </property>
+        <set name="ocorrenciases" inverse="true">
+            <key>
+                <column name="logradouro" not-null="true" />
+            </key>
+            <one-to-many class="model.Ocorrencias" />
+        </set>
+        <set name="eventoses" inverse="true">
+            <key>
+                <column name="logradouro" not-null="true" />
+            </key>
+            <one-to-many class="model.Eventos" />
+        </set>
+    </class>
+</hibernate-mapping>

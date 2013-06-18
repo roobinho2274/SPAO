@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 18/06/2013 01:20:38 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Ocorrencias" table="ocorrencias" catalog="spao2">
+        <id name="numeroOcorrencia" type="int">
+            <column name="numero_ocorrencia" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="policialByNumeroPolicial" class="model.Policial" fetch="select">
+            <column name="numero_policial" not-null="true" />
+        </many-to-one>
+        <many-to-one name="natureza" class="model.Natureza" fetch="select">
+            <column name="natureza" length="7" not-null="true" />
+        </many-to-one>
+        <many-to-one name="bairro" class="model.Bairro" fetch="select">
+            <column name="bairro" not-null="true" />
+        </many-to-one>
+        <many-to-one name="turno" class="model.Turno" fetch="select">
+            <column name="turno" not-null="true" />
+        </many-to-one>
+        <many-to-one name="policialByRadioOperador" class="model.Policial" fetch="select">
+            <column name="radio_operador" not-null="true" />
+        </many-to-one>
+        <many-to-one name="logradouro" class="model.Logradouro" fetch="select">
+            <column name="logradouro" not-null="true" />
+        </many-to-one>
+        <property name="dataHoraAcionamento" type="timestamp">
+            <column name="data_hora_acionamento" length="19" not-null="true" />
+        </property>
+        <property name="numeroReds" type="string">
+            <column name="numero_reds" length="18" not-null="true" unique="true" />
+        </property>
+        <property name="nomeSolicitante" type="string">
+            <column name="nome_solicitante" length="30" />
+        </property>
+        <property name="sinteseFato" type="string">
+            <column name="sintese_fato" length="30" not-null="true" />
+        </property>
+        <property name="numero" type="short">
+            <column name="numero" not-null="true" />
+        </property>
+        <property name="pontoReferencia" type="string">
+            <column name="ponto_referencia" length="30" />
+        </property>
+        <property name="setor" type="string">
+            <column name="setor" length="7" not-null="true" />
+        </property>
+        <property name="dataHoraChegadaLocal" type="timestamp">
+            <column name="data_hora_chegada_local" length="19" not-null="true" />
+        </property>
+        <property name="dataHoraEncerramento" type="timestamp">
+            <column name="data_hora_encerramento" length="19" not-null="true" />
+        </property>
+        <property name="presosApreendidos" type="string">
+            <column name="presos_apreendidos" length="100" />
+        </property>
+        <property name="removido" type="boolean">
+            <column name="removido" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

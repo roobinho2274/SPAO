@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 18/06/2013 01:20:38 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Log" table="log" catalog="spao2">
+        <id name="codigoLog" type="java.lang.Integer">
+            <column name="codigo_log" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="policial" class="model.Policial" fetch="select">
+            <column name="responsavel" not-null="true" />
+        </many-to-one>
+        <property name="dataHora" type="timestamp">
+            <column name="data_hora" length="19" not-null="true" />
+        </property>
+        <property name="local" type="string">
+            <column name="local" length="20" not-null="true" />
+        </property>
+        <property name="operacao" type="string">
+            <column name="operacao" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

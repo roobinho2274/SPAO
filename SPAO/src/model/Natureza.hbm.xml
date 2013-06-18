@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 18/06/2013 01:20:38 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Natureza" table="natureza" catalog="spao2">
+        <id name="codigoNatureza" type="string">
+            <column name="codigo_natureza" length="7" />
+            <generator class="assigned" />
+        </id>
+        <property name="natureza" type="string">
+            <column name="natureza" length="50" not-null="true" unique="true" />
+        </property>
+        <set name="ocorrenciases" inverse="true">
+            <key>
+                <column name="natureza" length="7" not-null="true" />
+            </key>
+            <one-to-many class="model.Ocorrencias" />
+        </set>
+        <set name="metases" inverse="true">
+            <key>
+                <column name="natureza" length="7" not-null="true" />
+            </key>
+            <one-to-many class="model.Metas" />
+        </set>
+    </class>
+</hibernate-mapping>
